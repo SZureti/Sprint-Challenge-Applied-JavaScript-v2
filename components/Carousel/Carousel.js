@@ -71,7 +71,8 @@ function createCarousel(){
   rightButton.classList.add('right-button');
 
   const photos = [imgMtns, imgComp, imgTree, imgTurn]
-  // click event handlers for buttons
+  
+  // CLICK EVENT FOR BUTTONS THAT STILL DON'T WORK RIGHT NOW
   leftButton.addEventListener('click', event => {
 
   })
