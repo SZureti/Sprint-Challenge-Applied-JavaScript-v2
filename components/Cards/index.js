@@ -26,8 +26,10 @@ const promise2 = axios.get('https://lambda-times-backend.herokuapp.com/articles'
 
 //PROMISE
 promise2 
-    .then(info => {
-        console.log('Cards Promise Working Fine', info.data);
+    .then(data => {
+        console.log('Cards Promise Working Fine', data);
+        const topicList = data.data.articles;
+        console.log(topicList);
     })
 //CATCH
     .catch(error => {

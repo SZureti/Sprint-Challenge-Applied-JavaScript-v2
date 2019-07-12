@@ -18,12 +18,33 @@ const promise = axios.get('https://lambda-times-backend.herokuapp.com/topics');
 promise
 .then(response => {
     console.log("Promise: Lambda Times ", response.data);
-    const tabs = document.querySelectorAll('.tabs');
+    // const tabs = document.querySelectorAll('.tabs');
+    const tabsArray = data.data.topics;
+    tabsArray.forEach(lambdaTopics => {
+        let newTab = createTabs(lambdaTopics);
+        topics.appendChild(newTab);
+    })
+    console.log(data.data.topics);
 })
 
 //CATCH
 .catch(error => {
     console.log('ERROR: Promise Not Working', error);
+})
+
+//CREATE ARRAY FOR TOPICS
+const topic = document.querySelector('.topics')
+
+const tabsArray = [
+    'javascript',
+    'bootstrap',
+    'technology',
+    'jquery',
+    'node.js',
+];
+
+tabsArray.forEach(data => {
+    topic.appendChild(createTabs(data))
 })
 
 //FUNCTION TO CREATE TAB ELEMENTS
@@ -33,6 +54,9 @@ const tab = document.createElement('div');
 const topics = document.createElement('div');
 const title = document.createElement('span');
 
+//
+tab.classList.add('tab');
+tab.textContent = lambdaTopics;
 //APPENDCHILD
 tabs.appendChild(tab);
 tab.append(topics, title);
