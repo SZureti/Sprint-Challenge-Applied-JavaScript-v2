@@ -17,24 +17,36 @@ const topics = document.querySelector('.topics');
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
 //Promise
-// promise
-.then(data => {
-    console.log("Promise: Lambda Times ", data.data.topics);
-  ////////DOESN'T WORK///////
+
+////////DOESN'T WORK///////
+// .then(data => {
+    // console.log("Promise: Lambda Times ", data.data.topics);
     // const content = data.data.topics;
     // content.forEach(content => {
     //     const newTab = createTab(content);
     //     topics.appendChild(newTab);
     // })
 
-    // const tabs = document.querySelectorAll('.tabs');
-    const topics = document.querySelectorAll('.topics');
-    const tabsArray = data.data.topics;
-    tabsArray.forEach(lambdaTopics => {
-        let newTab = createTabs(lambdaTopics);
-        topics.appendChild(tabsArray);
+//     const topics = document.querySelectorAll('.topics');
+//     const tabsArray = data.data.topics;
+//     tabsArray.forEach(lambdaTopics => {
+//         let newTab = createTabs(lambdaTopics);
+//         topics.appendChild(tabsArray);
+//     })
+//     console.log(data.data.topics);
+// })
+
+.then(response => {
+    // console.log(response);
+    const topics = [];
+    response.data.topics.forEach(dataTopic =>{
+        topics.push(dataTopic)
+        // console.log(`added ${dataTopic} to topics array`)
+    });
+    topics.forEach(topic => {
+        console.log('TOPICS ARE WORKING IN TABS', topic);
+        createTab(topic)
     })
-    console.log(data.data.topics);
 })
 
 //CATCH
@@ -42,37 +54,49 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     console.log('ERROR: Tabs Promise Not Working', error);
 })
 
+
+function createTab (topic) {
+    const topicsDiv = document.querySelector('.topics');
+    const tab = document.createElement('div');
+
+    //APPENDCHILD
+    tab.textContent = topic;
+    tab.classList.add('tab');
+    topicsDiv.appendChild(tab)
+
+    return tab
+} 
+
+
 //CREATE ARRAY FOR TOPICS
-const topic = document.querySelector('.topics')
+// const topic = document.querySelector('.topics')
 
-const tabsArray = [
-    'javascript',
-    'bootstrap',
-    'technology',
-    'jquery',
-    'node.js',
-];
+// const tabsArray = [
+//     'javascript',
+//     'bootstrap',
+//     'technology',
+//     'jquery',
+//     'node.js',
+// ];
 
-tabsArray.forEach(data => {
-    topic.appendChild(createTabs(data))
-})
+// tabsArray.forEach(data => {
+//     topic.appendChild(createTabs(data))
+// })
 
 //FUNCTION TO CREATE TAB ELEMENTS
-function createTabs(lambdaTopics){
-const tabs = document.createElement('div');
-const tab = document.createElement('div');
-const topics = document.createElement('div');
-const title = document.createElement('span');
+// function createTabs(lambdaTopics){
+// const tabs = document.createElement('div');
+// const tab = document.createElement('div');
+// const topics = document.createElement('div');
+// const title = document.createElement('span');
 
-//
-tab.classList.add('tab');
-tab.textContent = lambdaTopics;
+
+// tab.classList.add('tab');
+// tab.textContent = lambdaTopics;
 
 //APPENDCHILD
-tabs.appendChild(tab);
+
+// tabs.appendChild(tab);
 // tab.appendChild(topic);
 // tab.appendChild(title);
-tab.append(topics, title);
-
-return tab
-}
+// tab.append(topics, title);
