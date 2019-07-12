@@ -51,48 +51,56 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
         //     })
         // })
 
-        .then(res => {
-            const newArticles = res.data.articles;
-            console.log('newArticles: ', newArticles);
-            newArticles.javascript.forEach(createCard);
-            newArticles.bootstrap.forEach(createCard);
-            newArticles.technology.forEach(createCard);
-            newArticles.jquery.forEach(createCard);
-            newArticles.node.forEach(createCard);
+.then(res => {
+    const newArticles = res.data.articles;
+    console.log('newArticles: ', newArticles);
+    newArticles.javascript.forEach(createCard);
+    newArticles.bootstrap.forEach(createCard);
+    newArticles.technology.forEach(createCard);
+    newArticles.jquery.forEach(createCard);
+    newArticles.node.forEach(createCard);
         })
 
 //CATCH
-        .catch(error => {
-            console.log('ERROR: Cards Promise Not Working', error);
-        })
-    // })
+    .catch(error => {
+        console.log('ERROR: Cards Promise Not Working', error);
+    })
+
         
 //FUNCTION FO CREATE NEW ELEMENTS
 // function createCards(title, authorName, photo){
 function createCard(article){
     const cardsContainer = document.querySelector('.cards-container');
-
     const card = document.createElement('div');
     const headline = document.createElement('div');
     const author = document.createElement('div');
     const imgContainer = document.createElement('div');
-    const imgs = document.createElement('img');
     const authorImg = document.createElement('img')
     const authorBy = document.createElement('span')
-    // const span =  document.createElement('span');
-    // const name = document.createElement('name');
+
+//APPEND
+    // card.append(headline, author, imgContainer, name, span);
+    cardsContainer.appendChild(card);
+    card.appendChild(headline);
+    card.appendChild(author);
+    author.appendChild(authorBy);
+    author.appendChild(imgContainer);
+    author.appendChild(authorImg);
 
 //CREATE CONTENT
+
+headline.textContent = article.headline;
+const authorName = article.authorName;
+authorBy.textContent = `By: ${authorName}`;
+authorImg.src = article.authorPhoto;
+
 card.classList.add('card');
 headline.classList.add('headline');
 author.classList.add('author');
 imgContainer.classList.add('img-container');
-authorImg.style.width = '42px';
-// span.classList.add('span');
+authorImg.style.width = '50px';
 
-//CHANGE DISPLAY NAME FOR SPAN TO BY
-// span.textContent = "By";
-
+//////////DIDN'T WORK//////////////
 //IMAGE
 // imgs.src = imgUrl;
 // imgs.src = `${author.authorPhoto}`;
@@ -104,20 +112,5 @@ authorImg.style.width = '42px';
 // name.textContent = authorName;
 // imgs.src = photo;
 
-headline.textContent = article.headline;
-const authorName = article.authorName;
-authorBy.textContent = `By: ${authorName}`;
-authorImg.src = article.authorPhoto;
 
-//APPEND
-// card.append(headline, author, imgContainer, name, span);
-cardsContainer.appendChild(card);
-card.appendChild(headline);
-card.appendChild(author);
-author.appendChild(name);
-author.appendChild(authorBy);
-author.appendChild(imgContainer);
-author.appendChild(authorImg);
-
-imgContainer.appendChild(imgs);
 }
