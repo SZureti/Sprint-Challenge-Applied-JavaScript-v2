@@ -7,3 +7,35 @@
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
+//CONTAINER
+const tabs = document.querySelector('.tabs');
+
+//AXIOS
+const promise = axios.get('https://lambda-times-backend.herokuapp.com/topics');
+
+//Promise
+promise
+.then(response => {
+    console.log("Promise: Lambda Times ", response.data);
+    const tabs = document.querySelectorAll('.tabs');
+})
+
+//CATCH
+.catch(error => {
+    console.log('ERROR: Promise Not Working', error);
+})
+
+//FUNCTION TO CREATE TAB ELEMENTS
+function createTabs(lambdaTopics){
+const tabs = document.createElement('div');
+const tab = document.createElement('div');
+const topics = document.createElement('div');
+const title = document.createElement('span');
+
+//APPENDCHILD
+tabs.appendChild(tab);
+tab.append(topics, title);
+
+return tabs
+}
