@@ -9,27 +9,37 @@
 //    <div class="tab">topic here</div>
 
 //CONTAINER
-const tabs = document.querySelector('.tabs');
+// const tabs = document.querySelector('.tabs');
+const topics = document.querySelector('.topics');
 
 //AXIOS
-const promise = axios.get('https://lambda-times-backend.herokuapp.com/topics');
+// const promise = 
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
 //Promise
-promise
-.then(response => {
-    console.log("Promise: Lambda Times ", response.data);
+// promise
+.then(data => {
+    console.log("Promise: Lambda Times ", data.data.topics);
+  ////////DOESN'T WORK///////
+    // const content = data.data.topics;
+    // content.forEach(content => {
+    //     const newTab = createTab(content);
+    //     topics.appendChild(newTab);
+    // })
+
     // const tabs = document.querySelectorAll('.tabs');
+    const topics = document.querySelectorAll('.topics');
     const tabsArray = data.data.topics;
     tabsArray.forEach(lambdaTopics => {
         let newTab = createTabs(lambdaTopics);
-        topics.appendChild(newTab);
+        topics.appendChild(tabsArray);
     })
     console.log(data.data.topics);
 })
 
 //CATCH
 .catch(error => {
-    console.log('ERROR: Promise Not Working', error);
+    console.log('ERROR: Tabs Promise Not Working', error);
 })
 
 //CREATE ARRAY FOR TOPICS
@@ -57,9 +67,12 @@ const title = document.createElement('span');
 //
 tab.classList.add('tab');
 tab.textContent = lambdaTopics;
+
 //APPENDCHILD
 tabs.appendChild(tab);
+// tab.appendChild(topic);
+// tab.appendChild(title);
 tab.append(topics, title);
 
-return tabs
+return tab
 }
