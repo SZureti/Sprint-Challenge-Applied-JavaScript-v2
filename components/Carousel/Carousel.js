@@ -42,28 +42,21 @@ function createCarousel(){
   // INPUT CONTENT, BUTTONS AND IMAGES
   leftButton.textContent = '<';
   rightButton.textContent = '>';
-  imgMtns.src = "./assets/carousel/mountains.jpeg";
-  imgComp.src = "./assets/carousel/computer.jpeg";
-  imgTree.src = "./assets/carousel/trees.jpeg";
-  imgTurn.src = "./assets/carousel/turntable.jpeg";
- 
 
-  // leftButton.src = url=('https://cdn1.iconfinder.com/data/icons/arrows-4/512/arrow_6-512.png');
-  // rightButton.src = url=('https://cdn1.iconfinder.com/data/icons/arrows-4/512/arrow_6-512.png');
-  
+  // imgMtns.src = "./assets/carousel/mountains.jpeg";
+  // imgComp.src = "./assets/carousel/computer.jpeg";
+  // imgTree.src = "./assets/carousel/trees.jpeg";
+  // imgTurn.src = "./assets/carousel/turntable.jpeg";
+ 
   // imgMtns.src = url("https://raw.githubusercontent.com/SZureti/Sprint-Challenge-Applied-JavaScript-v2/blob/master/assets/carousel/mountains.jpeg?raw=true");
   // imgComp.src = url("https://raw.githubusercontent.com/SZureti/Sprint-Challenge-Applied-JavaScript-v2/blob/master/assets/carousel/computer.jpeg?raw=true");
   // imgTree.src = url("https://raw.githubusercontent.com/SZureti/Sprint-Challenge-Applied-JavaScript-v2/blob/master/assets/carousel/trees.jpeg?raw=true");
   // imgTurn.src = url("https://raw.githubusercontent.com/SZureti/Sprint-Challenge-Applied-JavaScript-v2/blob/master/assets/carousel/turntable.jpeg?raw=true");
-
-  // imgMtns.src = "./assets/carousel/mountains.jpeg";
-  // imgComp.src = url=("https://raw.githubusercontent.com/SZureti/Sprint-Challenge-Applied-JavaScript-v2/master/assets/carousel/computer.jpeg");
-  // imgTree.src = "./assets/carousel/trees.jpeg";
-  // imgTurn.src = "./assets/carousel/turntable.jpeg";
-
-  // imgMtns.src = "./assets/carousel/mountains.jpeg";
- 
-
+   
+  imgMtns.src = "https://i.ibb.co/bvJ72pv/mountains.jpg";
+  imgComp.src = "https://i.ibb.co/Wcqkw3M/computer.jpg";
+  imgTree.src = "https://i.ibb.co/mBMbQQY/trees.jpg";
+  imgTurn.src = "https://i.ibb.co/3BM0gTz/turntable.jpg";
 
   // STYLE
   carousel.classList.add('carousel');
@@ -71,16 +64,12 @@ function createCarousel(){
   rightButton.classList.add('right-button');
 
   const photos = [imgMtns, imgComp, imgTree, imgTurn]
-  
+
   // CLICK EVENT FOR BUTTONS THAT STILL DON'T WORK RIGHT NOW
   leftButton.addEventListener('click', event => {
-
   })
-
   rightButton.addEventListener('click', event => {
-
   })
-
 }
 
 createCarousel();
